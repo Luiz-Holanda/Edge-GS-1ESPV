@@ -1,94 +1,151 @@
-# Global Solution - Edge Computing
+# 🌎 Eco Fusion - Monitoramento Inteligente de Risco de Queimadas
 
-🔥 Sistema Inteligente de Monitoramento de Risco de Queimadas
+## 📌 Sobre o Projeto
 
-## 📌 Descrição do Projeto
+O **Eco Fusion** é uma solução desenvolvida para auxiliar na prevenção e monitoramento de queimadas por meio da integração entre **dados ambientais locais** e informações obtidas por satélites.
 
-Este projeto foi desenvolvido com o objetivo de monitorar condições ambientais associadas ao risco de queimadas.
+Este protótipo representa a camada **Edge Computing** do projeto, realizando medições instantâneas diretamente no ambiente utilizando sensores embarcados.
 
-O sistema utiliza um sensor DHT22 para realizar leituras de temperatura e umidade do ar. Com base nesses dados, um algoritmo de pontuação calcula o nível de risco de ocorrência e propagação de incêndios.
-
-As informações são exibidas em um display LCD I2C, enquanto LEDs e um buzzer fornecem alertas visuais e sonoros para situações de maior risco.
+Através de um sensor DHT22, o sistema monitora temperatura e umidade do ar em tempo real, calcula o risco de queimadas e avalia se as condições atuais estão adequadas para uma planta configurada pelo usuário.
 
 ---
 
 ## 🎯 Objetivos
 
-* Monitorar a temperatura do ambiente;
-* Monitorar a umidade relativa do ar;
-* Classificar o risco de queimadas em diferentes níveis;
-* Exibir informações em um display LCD I2C;
-* Utilizar LEDs para indicar visualmente o nível de risco;
-* Acionar um buzzer em situações críticas;
-* Demonstrar conceitos de monitoramento ambiental utilizando Arduino.
+* Monitorar temperatura ambiente em tempo real;
+* Monitorar umidade relativa do ar;
+* Calcular o risco local de queimadas;
+* Permitir a configuração dos limites ideais de uma planta;
+* Informar se a planta está em condições adequadas;
+* Exibir informações em um display LCD;
+* Fornecer alertas visuais através de uma barra NeoPixel;
+* Emitir alertas sonoros em situações críticas;
+* Integrar a coleta local de dados ao ecossistema Eco Fusion.
 
 ---
 
-## 🔗 Link do Projeto (Wokwi)
+## 🛰️ Eco Fusion
 
-[https://wokwi.com/projects/465662515143762945](https://wokwi.com/projects/465662515143762945)
+O projeto completo Eco Fusion combina:
 
----
+### Dados de Satélite
 
-## 📷 Simulação
+* Focos de calor;
+* Áreas queimadas;
+* Condições climáticas;
+* Monitoramento territorial.
 
-![Circuito](image.jpeg)
+Fontes planejadas:
 
----
+* NASA
+* ESA
+* Copernicus
+* INPE
 
-## 🛠️ Componentes Utilizados
+### Dados Locais (Este Protótipo)
 
-* Arduino UNO;
-* Sensor DHT22;
-* Display LCD I2C 16x2;
-* LEDs:
-
-  * 🟢 Verde;
-  * 🟡 Amarelo;
-  * 🔴 Vermelho;
-* Resistores;
-* Buzzer;
-* Protoboard;
-* Jumpers.
+* Temperatura ambiente;
+* Umidade relativa do ar;
+* Condições ideais para cultivo;
+* Avaliação instantânea de risco.
 
 ---
 
-## 📦 Dependências
+## 🔗 Simulação no Wokwi
 
-Bibliotecas utilizadas no projeto:
+Adicione aqui o link atualizado do projeto.
 
-* `Wire.h`
-* `LiquidCrystal_I2C.h`
-* `DHT.h`
+```
+[Simulação Wokiwi](https://wokwi.com/projects/465662515143762945)
+```
 
-Bibliotecas que devem ser instaladas na IDE Arduino:
+---
+
+## 📷 Circuito
+
+![Circuito Eco Fusion](image.png)
+
+---
+
+# 🛠️ Componentes Utilizados
+
+| Componente              | Quantidade |
+| ----------------------- | ---------- |
+| Arduino UNO             | 1          |
+| Sensor DHT22            | 1          |
+| Display LCD I2C 20x4    | 1          |
+| Teclado Matricial 4x4   | 1          |
+| Barra NeoPixel (7 LEDs) | 1          |
+| Buzzer                  | 1          |
+| Protoboard              | 1          |
+| Jumpers                 | Diversos   |
+
+---
+
+# 📦 Bibliotecas Utilizadas
+
+```cpp
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <DHT.h>
+#include <Adafruit_NeoPixel.h>
+#include <Keypad.h>
+```
+
+Bibliotecas necessárias:
 
 * DHT Sensor Library
 * LiquidCrystal I2C
+* Adafruit NeoPixel
+* Keypad
 
 ---
 
-## ⚙️ Funcionamento do Sistema
+# ⚙️ Funcionamento
 
-O sistema realiza leituras contínuas de:
+## 1️⃣ Configuração Inicial
 
-* Temperatura (°C);
-* Umidade Relativa (%).
+Ao iniciar o sistema, o usuário define:
 
-Cada variável recebe uma pontuação conforme as condições ambientais observadas.
+* Temperatura mínima ideal;
+* Temperatura máxima ideal;
+* Umidade mínima ideal;
+* Umidade máxima ideal.
 
-A soma dessas pontuações determina o nível de risco:
-
-* Baixo;
-* Médio;
-* Alto;
-* Crítico.
-
-O resultado é exibido no display LCD e indicado por LEDs e buzzer.
+Esses valores representam as condições desejadas para determinada planta.
 
 ---
 
-## 🧮 Sistema de Pontuação
+## 2️⃣ Coleta dos Dados
+
+O sensor DHT22 realiza leituras contínuas de:
+
+* Temperatura (°C)
+* Umidade (%)
+
+---
+
+## 3️⃣ Avaliação da Planta
+
+O sistema compara os dados atuais com os limites definidos.
+
+### Temperatura
+
+* Abaixo do mínimo → Temperatura Baixa
+* Acima do máximo → Temperatura Alta
+* Entre os limites → Temperatura Ideal
+
+### Umidade
+
+* Abaixo do mínimo → Umidade Baixa
+* Acima do máximo → Umidade Alta
+* Entre os limites → Umidade Ideal
+
+---
+
+## 4️⃣ Cálculo do Risco de Queimada
+
+O risco é calculado por um sistema de pontuação.
 
 ### Temperatura
 
@@ -112,183 +169,139 @@ O resultado é exibido no display LCD e indicado por LEDs e buzzer.
 | ≤ 30%   | 4      |
 | ≤ 25%   | 5      |
 
-### Cálculo do Risco
+---
+
+## Classificação
+
+| Pontuação | Risco   |
+| --------- | ------- |
+| 0 - 2     | BAIXO   |
+| 3 - 4     | MÉDIO   |
+| 5 - 6     | ALTO    |
+| 7 - 10    | CRÍTICO |
+
+---
+
+# 🌈 Barra NeoPixel
+
+A barra possui 7 LEDs que representam o risco calculado.
+
+### Faixa Verde
+
+LEDs 1 e 2
+
+* Situação segura
+
+### Faixa Amarela
+
+LEDs 3 e 4
+
+* Atenção
+
+### Faixa Vermelha
+
+LEDs 5, 6 e 7
+
+* Alto risco
+
+### Situação Crítica
+
+Quando o risco é crítico:
+
+* Todos os LEDs necessários permanecem vermelhos;
+* A barra passa a piscar.
+
+---
+
+# 🔔 Sistema de Alerta
+
+Quando o risco é classificado como **CRÍTICO**:
+
+* O buzzer é acionado;
+* Um ícone de fogo aparece no display;
+* A barra NeoPixel pisca continuamente.
+
+### Silenciar Alarme
+
+Tecla:
 
 ```text
-Pontos Temperatura + Pontos Umidade = Risco Total
+D
 ```
 
-| Risco Total | Nível   |
-| ----------- | ------- |
-| 0 - 2       | BAIXO   |
-| 3 - 4       | MÉDIO   |
-| 5 - 6       | ALTO    |
-| 7 - 10      | CRÍTICO |
+---
+
+# ⌨️ Controles do Teclado
+
+| Tecla | Função                 |
+| ----- | ---------------------- |
+| 0-9   | Inserir números        |
+| *     | Inserir ponto decimal  |
+| #     | Confirmar valor        |
+| A     | Apagar último dígito   |
+| B     | Reiniciar configuração |
+| D     | Silenciar buzzer       |
 
 ---
 
-## 💡 Regras de Funcionamento
+# 🖥️ Informações Exibidas no LCD
 
-### 🟢 LED Verde
+O sistema alterna automaticamente entre duas telas.
 
-Acende quando:
-
-* O risco é classificado como BAIXO.
-
----
-
-### 🟡 LED Amarelo
-
-Acende quando:
-
-* O risco é classificado como MÉDIO.
-
----
-
-### 🔴 LED Vermelho
-
-Acende quando:
-
-* O risco é classificado como ALTO;
-* O risco é classificado como CRÍTICO.
-
----
-
-### 🔔 Buzzer
-
-Permanece ligado quando:
-
-* O risco é classificado como CRÍTICO.
-
----
-
-### 🔥 Indicador de Incêndio
-
-Quando o risco atinge o nível CRÍTICO:
-
-* Um ícone de fogo personalizado é exibido no LCD;
-* O ícone pisca continuamente para chamar atenção do usuário.
-
----
-
-## 🖥️ Informações Exibidas no LCD
-
-### Primeira Linha
+## Tela 1 – Risco de Queimada
 
 ```text
-T:30.5°C U:45%
+Temperatura: 30.5°C
+Umidade: 45%
+
+Risco Queimada:
+ALTO
 ```
-
-Exibe:
-
-* Temperatura atual;
-* Umidade atual.
 
 ---
 
-### Segunda Linha
+## Tela 2 – Saúde da Planta
 
 ```text
-Risco:ALTO
+Temperatura: 30.5°C
+Umidade: 45%
+
+Planta:
+Temp Ideal
+Umidade Baixa
 ```
 
-ou
+---
 
-```text
-Risco:CRITICO 🔥
-```
+# 🧠 Conceitos Aplicados
 
-Exibe:
-
-* Classificação do risco;
-* Ícone de fogo piscante em situações críticas.
+* Edge Computing
+* Sistemas Embarcados
+* Arduino
+* Sensoriamento Ambiental
+* Agricultura Inteligente
+* Internet das Coisas (IoT)
+* Monitoramento Climático
+* Prevenção de Queimadas
+* Computação Física
 
 ---
 
-## 🔌 Ligações do Circuito
+# 🚀 Como Executar
 
-### Sensor DHT22
-
-| Pino DHT22 | Arduino |
-| ---------- | ------- |
-| VCC        | 5V      |
-| DATA       | D2      |
-| GND        | GND     |
-
----
-
-### Display LCD I2C
-
-| LCD I2C | Arduino UNO |
-| ------- | ----------- |
-| SDA     | A4          |
-| SCL     | A5          |
-| VCC     | 5V          |
-| GND     | GND         |
+1. Monte o circuito;
+2. Instale as bibliotecas necessárias;
+3. Faça upload do código;
+4. Configure os limites da planta utilizando o teclado;
+5. Observe as leituras em tempo real;
+6. Analise o risco de queimadas e as condições da planta.
 
 ---
 
-### LEDs
-
-| LED      | Pino |
-| -------- | ---- |
-| Verde    | 13   |
-| Amarelo  | 12   |
-| Vermelho | 11   |
-
----
-
-### Buzzer
-
-| Componente | Pino |
-| ---------- | ---- |
-| Buzzer     | 8    |
-
----
-
-## 🧠 Conceitos Utilizados
-
-* Sistemas embarcados;
-* Sensores digitais;
-* Monitoramento ambiental;
-* Análise de risco;
-* Arduino;
-* Display LCD I2C;
-* Caracteres personalizados em LCD;
-* Alertas visuais e sonoros;
-* Internet das Coisas (IoT).
-
----
-
-## 🚀 Como Executar
-
-1. Monte o circuito no Wokwi ou em uma protoboard;
-2. Instale as bibliotecas:
-
-   * DHT Sensor Library;
-   * LiquidCrystal I2C;
-3. Faça upload do código para o Arduino;
-4. Execute a simulação;
-5. Altere os valores de temperatura e umidade do DHT22;
-6. Observe:
-
-   * Mudança dos LEDs;
-   * Acionamento do buzzer;
-   * Atualização do LCD;
-   * Ícone de fogo em situações críticas.
-
----
-
-## 📷 Simulação
-
-Utilize a imagem do circuito utilizada no projeto.
-
----
-
-## 📚 Estrutura do Projeto
+# 📂 Estrutura do Projeto
 
 ```plaintext
-Projeto-Monitoramento-Queimadas
+EcoFusion-EdgeComputing
 │
 ├── sketch.ino
 ├── README.md
@@ -298,13 +311,7 @@ Projeto-Monitoramento-Queimadas
 
 ---
 
-## 📄 Licença
-
-Projeto acadêmico desenvolvido para a disciplina de Edge Computing & Computer Systems - FIAP.
-
----
-
-## 👥 Equipe
+# 👥 Equipe
 
 * Luiz Alberto De Carvalho Holanda Junior
 * Felipe Ribeiro Da Silva
@@ -313,14 +320,7 @@ Projeto acadêmico desenvolvido para a disciplina de Edge Computing & Computer S
 
 ---
 
-### Exemplo de Funcionamento
+# 📄 Licença
 
-| Temperatura | Umidade | Pontuação | Resultado |
-| ----------- | ------- | --------- | --------- |
-| 22°C        | 70%     | 1         | BAIXO     |
-| 30°C        | 60%     | 4         | MÉDIO     |
-| 30°C        | 30%     | 7         | CRÍTICO   |
-| 35°C        | 30%     | 8         | CRÍTICO   |
-| 40°C        | 25%     | 10        | CRÍTICO   |
+Projeto acadêmico desenvolvido para a disciplina de Edge Computing & Computer Systems – FIAP.
 
-**Observação:** os limites utilizados representam uma simplificação acadêmica para fins de demonstração do conceito de monitoramento de risco de queimadas.
