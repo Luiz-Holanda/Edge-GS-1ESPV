@@ -280,10 +280,8 @@ Umidade Baixa
 * Arduino
 * Sensoriamento Ambiental
 * Agricultura Inteligente
-* Internet das Coisas (IoT)
 * Monitoramento Climático
 * Prevenção de Queimadas
-* Computação Física
 
 ---
 
@@ -303,10 +301,9 @@ Umidade Baixa
 ```plaintext
 EcoFusion-EdgeComputing
 │
-├── sketch.ino
+├── script.ino
 ├── README.md
-├── image.png
-└── video-demo.mp4
+└── image.png
 ```
 
 ---
