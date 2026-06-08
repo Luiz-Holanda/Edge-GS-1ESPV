@@ -61,9 +61,7 @@ Fontes planejadas:
 
 Adicione aqui o link atualizado do projeto.
 
-```
 [Simulação Wokiwi](https://wokwi.com/projects/465662515143762945)
-```
 
 ---
 
