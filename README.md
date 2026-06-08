@@ -10,6 +10,12 @@ Através de um sensor DHT22, o sistema monitora temperatura e umidade do ar em t
 
 ---
 
+## 📷 Video de Apresentação
+
+[Eco Fusion](https://youtu.be/fwi0RFSQkYA)
+
+---
+
 ## 🎯 Objetivos
 
 * Monitorar temperatura ambiente em tempo real;
